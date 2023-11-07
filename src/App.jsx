@@ -3,12 +3,16 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Header, Loader, Footer } from "./components";
 import { useDispatch } from "react-redux";
 import { fetchCourses } from "./utils/functions";
+import { login, logout } from "./redux/reducers/userSlice";
+import { auth, onAuthStateChanged } from "./firebase.config";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Course = React.lazy(() => import("./pages/Course"));
 const Courses = React.lazy(() => import("./pages/Courses"));
 const User = React.lazy(() => import("./pages/User"));
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
+const SignIn = React.lazy(() => import("./pages/SignIn"));
+const SignUp = React.lazy(() => import("./pages/SignUp"));
 
 function App() {
   const dispatch = useDispatch();
@@ -16,6 +20,22 @@ function App() {
   useEffect(() => {
     dispatch(fetchCourses());
   }, [dispatch]);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, []);
 
   return (
     <div className="bg-black ${inter.className}">
@@ -59,6 +79,22 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <Courses />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <Suspense fallback={<Loader />}>
+                <SignIn />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <Suspense fallback={<Loader />}>
+                <SignUp />
               </Suspense>
             }
           />

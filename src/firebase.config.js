@@ -2,6 +2,14 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getDatabase } from "firebase/database";
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  updateProfile, 
+  onAuthStateChanged, 
+  signInWithEmailAndPassword, 
+  signOut 
+  } from 'firebase/auth';
 
 const apiKey = import.meta.env.VITE_APP_FIREBASE_API_KEY;
 const authDomain = import.meta.env.VITE_APP_FIREBASE_AUTH_DOMAIN;
@@ -25,4 +33,6 @@ const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 const db = getDatabase(app);
-export { app, firestore, storage, db };
+const auth = getAuth();
+
+export { app, firestore, storage, db, auth, createUserWithEmailAndPassword, updateProfile, onAuthStateChanged, signInWithEmailAndPassword, signOut };
