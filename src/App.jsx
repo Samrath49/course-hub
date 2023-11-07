@@ -4,6 +4,7 @@ import { Header, Loader, Footer } from "./components";
 import { useDispatch } from "react-redux";
 import { fetchCourses } from "./utils/functions";
 
+const Home = React.lazy(() => import("./pages/Home"));
 const Course = React.lazy(() => import("./pages/Course"));
 const Courses = React.lazy(() => import("./pages/Courses"));
 const User = React.lazy(() => import("./pages/User"));
@@ -25,7 +26,7 @@ function App() {
             path="/"
             element={
               <Suspense fallback={<Loader />}>
-                <Courses />
+                <Home />
               </Suspense>
             }
           />
@@ -33,7 +34,7 @@ function App() {
             index
             element={
               <Suspense fallback={<Loader />}>
-                <Courses />
+                <Home />
               </Suspense>
             }
           />
@@ -46,10 +47,18 @@ function App() {
             }
           />
           <Route
-            path="/course"
+            path="/courses/:courseLink"
             element={
               <Suspense fallback={<Loader />}>
                 <Course />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/courses"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Courses />
               </Suspense>
             }
           />

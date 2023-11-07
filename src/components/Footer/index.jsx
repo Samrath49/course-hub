@@ -61,12 +61,12 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <ul>
                 <li>
-                  <a
-                    href="/"
+                  <Link
+                    to="/"
                     className="dark:text-body-color-dark mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:hover:text-primary"
                   >
                     Home
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -74,12 +74,12 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <ul>
                 <li>
-                  <a
-                    href="/course"
+                  <Link
+                    to="/courses"
                     className="dark:text-body-color-dark mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:hover:text-primary"
                   >
                     Course
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -87,12 +87,12 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <ul>
                 <li>
-                  <a
-                    href="/user"
+                  <Link
+                    to="/user"
                     className="dark:text-body-color-dark mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:hover:text-primary"
                   >
                     User
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

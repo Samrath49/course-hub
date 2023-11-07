@@ -2,7 +2,10 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const SingleCard = ({ course }) => {
-  const { name, thumbnail, description, instructor, tags, schedule } = course;
+  const { name, link, thumbnail, description, instructor, tags, duration } =
+    course;
+
+  console.log(course);
 
   return (
     <>
@@ -11,7 +14,7 @@ const SingleCard = ({ course }) => {
         data-wow-delay=".1s"
       >
         <Link
-          to="/blog-details"
+          to={`/courses/${link}`}
           className="relative block aspect-[37/22] w-full"
         >
           <span className="absolute right-6 top-6 z-20 inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold capitalize text-white">
@@ -22,7 +25,7 @@ const SingleCard = ({ course }) => {
         <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
           <h3>
             <Link
-              to="/blog-details"
+              to={`/courses/${link}`}
               className="mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl"
             >
               {name}
@@ -40,18 +43,18 @@ const SingleCard = ({ course }) => {
               </div>
               <div className="w-full">
                 <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                  By {instructor.name}
+                  By {instructor}
                 </h4>
                 <p className="text-xs text-body-color">
-                  {instructor.designation}
+                  Professional Instructor
                 </p>
               </div>
             </div>
             <div className="inline-block">
               <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                Schedule
+                Course Duration
               </h4>
-              <p className="text-xs text-body-color">{schedule}</p>
+              <p className="text-xs text-body-color">{duration}</p>
             </div>
           </div>
         </div>
