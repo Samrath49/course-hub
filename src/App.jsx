@@ -1,6 +1,8 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Header, Loader, Footer } from "./components";
+import { useDispatch } from "react-redux";
+import { fetchCourses } from "./utils/functions";
 
 const Course = React.lazy(() => import("./pages/Course"));
 const Courses = React.lazy(() => import("./pages/Courses"));
@@ -8,6 +10,12 @@ const User = React.lazy(() => import("./pages/User"));
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCourses());
+  }, [dispatch]);
+
   return (
     <div className="bg-black ${inter.className}">
       <Router>

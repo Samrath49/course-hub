@@ -1,27 +1,39 @@
 import React from "react";
 import { Hero, SingleCard, PageHeader } from "../components";
-import courses from "../utils/data";
+import { useSelector } from "react-redux";
 
 const Courses = () => {
+  const courses = useSelector((state) => state.courses.courses);
+  const searchQuery = useSelector((state) => state.search.searchQuery);
+  const searchResults = useSelector((state) => state.search.searchResults);
+
   return (
     <div>
       <Hero />
-      <PageHeader
-        title={"Our Courses"}
-        description={"A broad selection of courses"}
-        isPage={false}
-      />
+      <div>
+        <PageHeader
+          title={"Our Courses"}
+          description={"A broad selection of courses"}
+          isPage={false}
+          enableSearch={true}
+        />
+      </div>
+
       <section className="pb-[120px] pt-[120px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
-            {courses.map((course) => (
-              <div
-                key={course.id}
-                className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
-              >
-                <SingleCard course={course} />
-              </div>
-            ))}
+            {searchQuery && searchResults.length === 0 ? (
+              <p>No courses found.</p>
+            ) : (
+              (searchQuery ? searchResults : courses).map((course) => (
+                <div
+                  key={course.id}
+                  className="w-full px-4 md:w-2/3 lg:w-1/2 xl:w-1/3"
+                >
+                  <SingleCard course={course} />
+                </div>
+              ))
+            )}
           </div>
 
           <div
@@ -33,7 +45,7 @@ const Courses = () => {
                 <li className="mx-1">
                   <a
                     href="#0"
-                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover:bg-opacity-100 hover:text-white"
+                    className="flex h-9 min-w-[36px] items-center justify-center rounded-md bg-body-color bg-opacity-[15%] px-4 text-sm text-body-color transition hover:bg-primary hover-bg-opacity-100 hover:text-white"
                   >
                     Prev
                   </a>

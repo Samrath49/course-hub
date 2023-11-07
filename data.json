@@ -1,0 +1,111 @@
+{
+  "courses": {
+  "1": {
+      "id": 1,
+      "name": "Introduction to React Native",
+      "instructor": "John Doe",
+      "description": "Learn the basics of React Native development and build your first mobile app.",
+      "enrollmentStatus": "Open",
+      "tags": ["React Native"],
+      "thumbnail": "your.image.here",
+      "duration": "8 weeks",
+      "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+      "location": "Online",
+      "prerequisites": ["Basic JavaScript knowledge"],
+      "syllabus": {
+        "week1": {
+          "topic": "Introduction to React Native",
+          "content": "Overview of React Native, setting up your development environment."
+        },
+        "week2": {
+          "topic": "Building Your First App",
+          "content": "Creating a simple mobile app using React Native components."
+        },
+        "week3": {
+          "topic": "Working with Components",
+          "content": "Understanding and using React Native components effectively."
+        },
+        "week4": {
+          "topic": "Styling and Theming",
+          "content": "Customizing the look and feel of your mobile app."
+        },
+        "week5": {
+          "topic": "State Management",
+          "content": "Managing app state and user interactions with state management."
+        },
+        "week6": {
+          "topic": "Navigation and Routing",
+          "content": "Implementing navigation and routing within your app."
+        },
+        "week7": {
+          "topic": "Data Persistence",
+          "content": "Storing and retrieving data on the mobile device."
+        },
+        "week8": {
+          "topic": "Testing and Deployment",
+          "content": "Testing your app and deploying it to app stores."
+        }
+      },
+      "students": {
+        "0": {
+          "name": "Alice Johnson",
+          "email": "alice@example.com"
+        },
+        "1": {
+          "name": "Bob Smith",
+          "email": "bob@example.com"
+        },
+        "2": {
+          "name": "Charlie Brown",
+          "email": "charlie@example.com"
+        },
+        "3": {
+          "name": "David Lee",
+          "email": "david@example.com"
+        },
+        "4": {
+          "name": "Ella Davis",
+          "email": "ella@example.com"
+        },
+        "5": {
+          "name": "Frank Miller",
+          "email": "frank@example.com"
+        }
+      }
+    },
+   "2": {
+      "id": 2,
+      "name": "Advanced JavaScript Fundamentals",
+      "instructor": "Jane Smith",
+      "description": "Deepen your JavaScript knowledge and master advanced concepts.",
+      "enrollmentStatus": "Open",
+      "tags": ["JavaScript"],
+      "thumbnail": "your.image.here",
+      "duration": "10 weeks",
+      "schedule": "Mondays and Wednesdays, 7:00 PM - 9:00 PM",
+      "location": "Online",
+      "prerequisites": ["Intermediate programming skills"],
+      "syllabus": {
+        "week1": {
+          "topic": "ES6 Features",
+          "content": "Exploring the latest ES6 features and syntax."
+        },
+        "week2": {
+          "topic": "Asynchronous Programming",
+          "content": "Understanding async/await and handling async operations."
+        }
+      },
+      "students": {
+        "0": {
+          "name": "Carol Wilson",
+          "email": "carol@example.com"
+        },
+        "1": {
+          "name": "David Turner",
+          "email": "david@example.com"
+        }
+      }
+    }
+  }
+  }
+  
