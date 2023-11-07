@@ -17,11 +17,5 @@ const menuData = [
     path: "/user",
     newTab: false,
   },
-  {
-    id: 3,
-    title: "Support",
-    path: "/contact",
-    newTab: false,
-  },
 ];
 export default menuData;

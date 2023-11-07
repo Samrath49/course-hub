@@ -5,6 +5,7 @@ import { Header, Loader, Footer } from "./components";
 const Course = React.lazy(() => import("./pages/Course"));
 const Courses = React.lazy(() => import("./pages/Courses"));
 const User = React.lazy(() => import("./pages/User"));
+const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
             path="*"
             element={
               <Suspense fallback={<Loader full={true} />}>
-                <span>404</span>
+                <ErrorPage />
               </Suspense>
             }
           />
