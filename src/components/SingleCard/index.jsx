@@ -72,7 +72,7 @@ const SingleCard = ({ course }) => {
             {tags[0]}
           </span>
           <img
-            src={`/src/assets/course/${getRandomNumber()}.jpg`}
+            src={`/images/course/${getRandomNumber()}.jpg`}
             alt="thumbnail"
             className="w-full"
           />
@@ -94,7 +94,7 @@ const SingleCard = ({ course }) => {
               <div className="mr-4">
                 <div className="relative h-10 w-10 overflow-hidden rounded-full">
                   <img
-                    src={`/src/assets/instructor/${getRandomNumber()}.png`}
+                    src={`/images/instructor/${getRandomNumber()}.png`}
                     className="w-full"
                     alt="instructor"
                   />

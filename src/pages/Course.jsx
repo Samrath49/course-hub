@@ -79,7 +79,7 @@ const Course = () => {
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
                           <img
-                            src={`/src/assets/instructor/${getRandomNumber()}.png`}
+                            src={`/images/instructor/${getRandomNumber()}.png`}
                             className="w-full"
                             alt="instructor"
                           />
@@ -234,7 +234,7 @@ const Course = () => {
                   <div className="mb-10 w-full overflow-hidden rounded">
                     <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                       <img
-                        src={`/src/assets/course/${getRandomNumber()}.jpg`}
+                        src={`/images/course/${getRandomNumber()}.jpg`}
                         alt="thumbnail"
                         className="w-full"
                       />
