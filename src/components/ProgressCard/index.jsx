@@ -1,21 +1,22 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import ProgressBar from "../ProgressBar";
+import { Checkbox, Typography } from "@material-tailwind/react";
+import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/reducers/userSlice";
-import {
-  enrollUserInCourse,
-  unenrollUserFromCourse,
-} from "../../utils/functions";
+import { Button } from "@material-tailwind/react";
 import {
   enrollInCourse,
   unenrollFromCourse,
 } from "../../redux/reducers/enrolledCoursesSlice";
-import { Button } from "@material-tailwind/react";
+import {
+  enrollUserInCourse,
+  unenrollUserFromCourse,
+} from "../../utils/functions";
 
-const SingleCard = ({ course }) => {
+const ProgressCard = ({ course }) => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-
   const {
     name,
     id,
@@ -32,8 +33,10 @@ const SingleCard = ({ course }) => {
 
   const studentArray = Object.values(students);
   const isUserEnrolled = studentArray.some(
-    (student) => student?.email === user?.email
+    (student) => student.email === user.email
   );
+
+  console.log("👋", isUserEnrolled);
 
   const handleEnroll = () => {
     if (isUserEnrolled) {
@@ -51,7 +54,7 @@ const SingleCard = ({ course }) => {
     dispatch(unenrollFromCourse(id));
   };
 
-  console.log("🔍🔍🔍", students);
+  console.log("@course", course);
 
   return (
     <>
@@ -80,7 +83,7 @@ const SingleCard = ({ course }) => {
           <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
             {description}
           </p>
-          <div className="flex items-center">
+          <div className="flex items-center mb-5">
             <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
               <div className="mr-4">
                 <div className="relative h-10 w-10 overflow-hidden rounded-full">
@@ -103,23 +106,66 @@ const SingleCard = ({ course }) => {
               <p className="text-xs text-body-color">{duration}</p>
             </div>
           </div>
-          {isUserEnrolled ? (
-            <>
-              <Button onClick={handleUnenroll} className="bg-red-500" size="sm">
-                Leave Course
-              </Button>
-            </>
-          ) : (
-            <div className="w-full flex justify-end">
-              <Button onClick={handleEnroll} className="bg-[#4A6CF7]" size="sm">
-                Enroll
-              </Button>
+
+          <p className="mb-6 border-b border-t border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
+            <div className="px-7 mt-6">
+              <ProgressBar value={50} />
             </div>
-          )}
+          </p>
+          <div className="flex justify-center">
+            <div className="mr-5 flex items-center justify-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
+              <div className="w-full">
+                <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                  Course Availability
+                </h4>
+                <p className="text-xs text-body-color">{location}</p>
+              </div>
+            </div>
+            <div className="inline-block">
+              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                Schedule
+              </h4>
+              <p className="text-xs text-body-color">{schedule}</p>
+            </div>
+          </div>
+          <div className="pt-5 px-5 w-full flex justify-between">
+            {isUserEnrolled ? (
+              <>
+                <Checkbox
+                  color="white"
+                  id="ripple-on"
+                  label={
+                    <Typography className="flex font-medium text-blue-gray-300">
+                      Mark as complete.
+                    </Typography>
+                  }
+                  className="bg-blue-gray-300"
+                  ripple={true}
+                />
+                <Button
+                  onClick={handleUnenroll}
+                  className="bg-red-500"
+                  size="sm"
+                >
+                  Leave Course
+                </Button>
+              </>
+            ) : (
+              <div className="w-full flex justify-end">
+                <Button
+                  onClick={handleEnroll}
+                  className="bg-[#4A6CF7]"
+                  size="sm"
+                >
+                  Enroll
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default SingleCard;
+export default ProgressCard;

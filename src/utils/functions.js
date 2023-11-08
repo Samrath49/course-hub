@@ -1,5 +1,5 @@
 import { fetchCoursesSuccess, fetchCoursesFailure } from '../redux/reducers/coursesSlice';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, update, remove } from 'firebase/database';
 import { db } from "../firebase.config";
 
 export const fetchCourses = () => {
@@ -24,3 +24,19 @@ export const fetchCourses = () => {
     }
   };
 };
+
+export const enrollUserInCourse = (courseId, userId) => {
+  const courseRef = ref(db, `courses/${courseId}/students/${userId}`);
+  // Set the user's enrollment status
+  update(courseRef, {
+    name: "User Name",
+    progress: "0",
+    completed: "false"
+  });
+}
+
+export const unenrollUserFromCourse = (courseId, userId) => {
+  const courseRef = ref(db, `courses/${courseId}/students/${userId}`);
+  // Remove the user from the course's students
+  remove(courseRef);
+}

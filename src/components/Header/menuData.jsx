@@ -13,8 +13,8 @@ const menuData = [
   },
   {
     id: 33,
-    title: "User",
-    path: "/user",
+    title: "Profile",
+    path: "/user-profile",
     newTab: false,
   },
 ];

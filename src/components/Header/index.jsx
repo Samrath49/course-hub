@@ -4,6 +4,7 @@ import menuData from "./menuData";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser } from "../../redux/reducers/userSlice";
 import { logout } from "../../redux/reducers/userSlice";
+import { auth, signOut } from "../../firebase.config";
 
 const Header = () => {
   const location = useLocation();
@@ -41,8 +42,16 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logout());
-    navigate("/");
+    signOut(auth)
+      .then(() => {
+        dispatch(logout());
+      })
+      .finally(() => {
+        navigate("/");
+      })
+      .catch(() => {
+        alert("Couldn't log out");
+      });
   };
 
   return (

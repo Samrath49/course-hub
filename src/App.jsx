@@ -9,7 +9,7 @@ import { auth, onAuthStateChanged } from "./firebase.config";
 const Home = React.lazy(() => import("./pages/Home"));
 const Course = React.lazy(() => import("./pages/Course"));
 const Courses = React.lazy(() => import("./pages/Courses"));
-const User = React.lazy(() => import("./pages/User"));
+const Profile = React.lazy(() => import("./pages/Profile"));
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 const SignIn = React.lazy(() => import("./pages/SignIn"));
 const SignUp = React.lazy(() => import("./pages/SignUp"));
@@ -59,10 +59,10 @@ function App() {
             }
           />
           <Route
-            path="/user"
+            path="/user-profile"
             element={
               <Suspense fallback={<Loader />}>
-                <User />
+                <Profile />
               </Suspense>
             }
           />
