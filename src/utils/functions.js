@@ -50,3 +50,7 @@ export const unenrollUserFromCourse = (courseId, user) => {
     console.error(`Error unenrolling user from the course: ${error}`);
   });
 }
+
+export const getRandomNumber = () => {
+  return Math.floor(Math.random() * 4) + 1;
+}

@@ -1,19 +1,23 @@
 {
   "courses": {
-  "1": {
+    "1": {
       "id": 1,
       "name": "Introduction to React Native",
       "link": "introduction-to-react-native",
       "instructor": "John Doe",
       "description": "Learn the basics of React Native development and build your first mobile app.",
       "enrollmentStatus": "Open",
-      "tags": ["React Native"],
+      "tags": [
+        "React Native"
+      ],
       "likes": "40263",
       "thumbnail": "your.image.here",
       "duration": "8 weeks",
       "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
       "location": "Online",
-      "prerequisites": ["Basic JavaScript knowledge"],
+      "prerequisites": [
+        "Basic JavaScript knowledge"
+      ],
       "syllabus": {
         "week1": {
           "topic": "Introduction to React Native",
@@ -93,20 +97,24 @@
         }
       }
     },
-   "2": {
+    "2": {
       "id": 2,
-      "name": "Advanced JavaScript Fundamentals",
-      "link": "advanced-javaScript-fundamentals",
+      "name": "Advanced JavaScript",
+      "link": "advanced-javaScript",
       "instructor": "Jane Smith",
       "description": "Deepen your JavaScript knowledge and master advanced concepts.",
       "enrollmentStatus": "Open",
-      "tags": ["JavaScript"],
-      "likes":"125",
+      "tags": [
+        "JavaScript"
+      ],
+      "likes": "125",
       "thumbnail": "your.image.here",
       "duration": "10 weeks",
       "schedule": "Mondays and Wednesdays, 7:00 PM - 9:00 PM",
       "location": "Online",
-      "prerequisites": ["Intermediate programming skills"],
+      "prerequisites": [
+        "Intermediate programming skills"
+      ],
       "syllabus": {
         "week1": {
           "topic": "ES6 Features",
@@ -127,6 +135,209 @@
           "email": "david@example.com"
         }
       }
+    },
+    "3": {
+      "id": 3,
+      "name": "Web Development Bootcamp",
+      "link": "web-development-bootcamp",
+      "instructor": "John Milks",
+      "description": "A comprehensive bootcamp to learn web development from scratch.",
+      "enrollmentStatus": "Open",
+      "tags": [
+        "Web Development",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "likes": "220",
+      "thumbnail": "your.image.here",
+      "duration": "12 weeks",
+      "schedule": "Tuesdays and Thursdays, 6:00 PM - 8:00 PM",
+      "location": "Online",
+      "prerequisites": [
+        "No prior experience required"
+      ],
+      "syllabus": {
+        "week1": {
+          "topic": "Introduction to HTML",
+          "content": "Learn the basics of HTML and create your first webpage."
+        },
+        "week2": {
+          "topic": "Styling with CSS",
+          "content": "Explore CSS for styling your web pages."
+        }
+      },
+      "students": {
+        "0": {
+          "name": "Alice Johnson",
+          "email": "alice@example.com"
+        },
+        "1": {
+          "name": "Bob Smith",
+          "email": "bob@example.com"
+        }
+      }
+    },
+    "4": {
+      "id": 4,
+      "name": "Full-Stack Web Development with React",
+      "link": "full-stack-web-development-with-react",
+      "instructor": "Michael Jones",
+      "description": "Learn the fundamentals of full-stack web development using React.",
+      "enrollmentStatus": "Open",
+      "tags": [
+        "React",
+        "JavaScript",
+        "Web Development"
+      ],
+      "likes": "150",
+      "thumbnail": "your.image.here",
+      "duration": "12 weeks",
+      "schedule": "Tuesdays and Thursdays, 8:00 PM - 10:00 PM",
+      "location": "Online",
+      "prerequisites": [
+        "Basic programming skills and HTML/CSS knowledge"
+      ],
+      "syllabus": {
+        "week1": {
+          "topic": "Introduction to React",
+          "content": "Setting up the React development environment and understanding the basics of React components."
+        },
+        "week2": {
+          "topic": "Building React Applications",
+          "content": "Creating reusable components, handling state and data flow, and using React Router for routing."
+        }
+      },
+      "students": {
+        "0": {
+          "name": "Alice Parker",
+          "email": "alice@example.com"
+        },
+        "1": {
+          "name": "Bob Williams",
+          "email": "bob@example.com"
+        }
+      }
+    },
+    "5": {
+      "id": 5,
+      "name": "React.js Fundamentals",
+      "link": "reactjs-fundamentals",
+      "instructor": "Emily Brown",
+      "description": "Master the fundamentals of React.js for building dynamic web applications.",
+      "enrollmentStatus": "Open",
+      "tags": [
+        "React.js",
+        "Front-end Development"
+      ],
+      "likes": "180",
+      "thumbnail": "your.image.here",
+      "duration": "8 weeks",
+      "schedule": "Mondays and Wednesdays, 6:30 PM - 8:30 PM",
+      "location": "Online",
+      "prerequisites": [
+        "Basic HTML, CSS, and JavaScript knowledge"
+      ],
+      "syllabus": {
+        "week1": {
+          "topic": "Introduction to React",
+          "content": "Getting started with React components."
+        },
+        "week2": {
+          "topic": "State and Props",
+          "content": "Managing state and props in React."
+        }
+      },
+      "students": {
+        "0": {
+          "name": "Ella Davis",
+          "email": "ella@example.com"
+        },
+        "1": {
+          "name": "Frank Miller",
+          "email": "frank@example.com"
+        }
+      }
+    },
+    "6": {
+      "id": 6,
+      "name": "Data Science with Python",
+      "link": "data-science-with-python",
+      "instructor": "Susan Lee",
+      "description": "Master the fundamentals of data science using Python.",
+      "enrollmentStatus": "Open",
+      "tags": [
+        "Python",
+        "Data Science"
+      ],
+      "likes": "175",
+      "thumbnail": "your.image.here",
+      "duration": "16 weeks",
+      "schedule": "Wednesdays and Fridays, 7:00 PM - 9:00 PM",
+      "location": "Online",
+      "prerequisites": [
+        "Basic programming skills and mathematics knowledge"
+      ],
+      "syllabus": {
+        "week1": {
+          "topic": "Introduction to Data Science and Python",
+          "content": "Understanding the field of data science and getting started with Python programming."
+        },
+        "week2": {
+          "topic": "Data Manipulation and Analysis with Pandas",
+          "content": "Learning how to use Pandas to manipulate, clean, and analyze data."
+        }
+      },
+      "students": {
+        "0": {
+          "name": "Emily Davis",
+          "email": "emily@example.com"
+        },
+        "1": {
+          "name": "Mark Taylor",
+          "email": "mark@example.com"
+        }
+      }
+    },
+    "7": {
+      "id": 7,
+      "name": "Python for Data Science",
+      "link": "python-data-science",
+      "instructor": "Sophia White",
+      "description": "Learn Python programming for data science and analysis.",
+      "enrollmentStatus": "Open",
+      "tags": [
+        "Python",
+        "Data Science"
+      ],
+      "likes": "150",
+      "thumbnail": "your.image.here",
+      "duration": "14 weeks",
+      "schedule": "Saturdays, 10:00 AM - 12:00 PM",
+      "location": "Online",
+      "prerequisites": [
+        "No prior programming experience required"
+      ],
+      "syllabus": {
+        "week1": {
+          "topic": "Python Basics",
+          "content": "Introduction to Python and basic programming concepts."
+        },
+        "week2": {
+          "topic": "Data Analysis",
+          "content": "Analyzing data with Python libraries."
+        }
+      },
+      "students": {
+        "0": {
+          "name": "Grace Anderson",
+          "email": "grace@example.com"
+        },
+        "1": {
+          "name": "Harry Turner",
+          "email": "harry@example.com"
+        }
+      }
     }
   }
-  }
+}

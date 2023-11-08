@@ -7,6 +7,7 @@ import { removeLikes, updateLikes } from "../redux/reducers/likeSlice";
 import { ref, set } from "firebase/database";
 import { db } from "../firebase.config";
 import { selectUser } from "../redux/reducers/userSlice";
+import { getRandomNumber } from "../utils/functions";
 
 const Course = () => {
   const { courseLink } = useParams();
@@ -52,7 +53,7 @@ const Course = () => {
       return false;
     });
 
-  console.log(isUserEnrolled);
+  // console.log(isUserEnrolled);
 
   useEffect(() => {
     if (likes[course?.id]) {
@@ -78,9 +79,9 @@ const Course = () => {
                       <div className="mr-4">
                         <div className="relative h-10 w-10 overflow-hidden rounded-full">
                           <img
-                            src="/images/blog/author-02.png"
-                            alt="author"
-                            fill
+                            src={`/src/assets/instructor/${getRandomNumber()}.png`}
+                            className="w-full"
+                            alt="instructor"
                           />
                         </div>
                       </div>
@@ -233,10 +234,9 @@ const Course = () => {
                   <div className="mb-10 w-full overflow-hidden rounded">
                     <div className="relative aspect-[97/60] w-full sm:aspect-[97/44]">
                       <img
-                        src="/images/blog/blog-details-01.jpg"
-                        alt="image"
-                        fill
-                        className="h-full w-full object-cover object-center"
+                        src={`/src/assets/course/${getRandomNumber()}.jpg`}
+                        alt="thumbnail"
+                        className="w-full"
                       />
                     </div>
                   </div>

@@ -18,7 +18,7 @@ const SignIn = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
 
-  console.log(user);
+  // console.log(user);
 
   const signInWithGoogle = async () => {
     try {
