@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { selectUser } from "../../redux/reducers/userSlice";
 import {
   enrollUserInCourse,
+  fetchCourses,
   unenrollUserFromCourse,
 } from "../../utils/functions";
 import {
@@ -31,27 +32,30 @@ const SingleCard = ({ course }) => {
   } = course;
 
   const studentArray = Object.values(students);
-  const isUserEnrolled = studentArray.some(
-    (student) => student?.email === user?.email
-  );
-
-  const handleEnroll = () => {
-    if (isUserEnrolled) {
-      return; // User is already enrolled
+  const isUserEnrolled = studentArray.some((student) => {
+    if (student?.email === user?.email) {
+      return true;
     }
-    enrollUserInCourse(id, user.uid);
-    dispatch(enrollInCourse(course));
+    return false;
+  });
+
+  const handleEnroll = async () => {
+    if (isUserEnrolled) {
+      return;
+    }
+
+    const courseId = id;
+    await enrollUserInCourse(courseId, user);
+
+    dispatch(fetchCourses());
+    dispatch(enrollInCourse({ course, user }));
   };
 
   const handleUnenroll = () => {
-    if (!isUserEnrolled) {
-      return; // User is not enrolled
-    }
-    unenrollUserFromCourse(id, user.uid);
-    dispatch(unenrollFromCourse(id));
+    const courseId = id;
+    unenrollUserFromCourse(courseId, user);
+    dispatch(unenrollFromCourse(courseId));
   };
-
-  console.log("🔍🔍🔍", students);
 
   return (
     <>
@@ -105,13 +109,21 @@ const SingleCard = ({ course }) => {
           </div>
           {isUserEnrolled ? (
             <>
-              <Button onClick={handleUnenroll} className="bg-red-500" size="sm">
+              <Button
+                onClick={handleUnenroll}
+                className="bg-red-500 mt-5"
+                size="sm"
+              >
                 Leave Course
               </Button>
             </>
           ) : (
             <div className="w-full flex justify-end">
-              <Button onClick={handleEnroll} className="bg-[#4A6CF7]" size="sm">
+              <Button
+                onClick={handleEnroll}
+                className="bg-[#4A6CF7] mt-5"
+                size="sm"
+              >
                 Enroll
               </Button>
             </div>

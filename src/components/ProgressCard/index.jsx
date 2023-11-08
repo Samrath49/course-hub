@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProgressBar from "../ProgressBar";
 import { Checkbox, Typography } from "@material-tailwind/react";
@@ -32,29 +32,24 @@ const ProgressCard = ({ course }) => {
   } = course;
 
   const studentArray = Object.values(students);
-  const isUserEnrolled = studentArray.some(
-    (student) => student.email === user.email
-  );
-
-  console.log("👋", isUserEnrolled);
-
-  const handleEnroll = () => {
-    if (isUserEnrolled) {
-      return; // User is already enrolled
+  let progress = null;
+  const isUserEnrolled = studentArray.some((student) => {
+    if (student?.email === user?.email) {
+      progress = student?.progress;
+      console.log(student);
+      return true;
     }
-    enrollUserInCourse(id, user.uid);
-    dispatch(enrollInCourse(course));
-  };
+    return false;
+  });
+
+  console.log("✨✨", isUserEnrolled, progress);
 
   const handleUnenroll = () => {
-    if (!isUserEnrolled) {
-      return; // User is not enrolled
-    }
-    unenrollUserFromCourse(id, user.uid);
-    dispatch(unenrollFromCourse(id));
-  };
+    const courseId = id;
 
-  console.log("@course", course);
+    unenrollUserFromCourse(courseId, user);
+    dispatch(unenrollFromCourse(courseId));
+  };
 
   return (
     <>
@@ -109,7 +104,7 @@ const ProgressCard = ({ course }) => {
 
           <p className="mb-6 border-b border-t border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
             <div className="px-7 mt-6">
-              <ProgressBar value={50} />
+              <ProgressBar value={Number(progress)} />
             </div>
           </p>
           <div className="flex justify-center">
@@ -129,38 +124,20 @@ const ProgressCard = ({ course }) => {
             </div>
           </div>
           <div className="pt-5 px-5 w-full flex justify-between">
-            {isUserEnrolled ? (
-              <>
-                <Checkbox
-                  color="white"
-                  id="ripple-on"
-                  label={
-                    <Typography className="flex font-medium text-blue-gray-300">
-                      Mark as complete.
-                    </Typography>
-                  }
-                  className="bg-blue-gray-300"
-                  ripple={true}
-                />
-                <Button
-                  onClick={handleUnenroll}
-                  className="bg-red-500"
-                  size="sm"
-                >
-                  Leave Course
-                </Button>
-              </>
-            ) : (
-              <div className="w-full flex justify-end">
-                <Button
-                  onClick={handleEnroll}
-                  className="bg-[#4A6CF7]"
-                  size="sm"
-                >
-                  Enroll
-                </Button>
-              </div>
-            )}
+            <Checkbox
+              color="white"
+              id="ripple-on"
+              label={
+                <Typography className="flex font-medium text-blue-gray-300">
+                  Mark as complete.
+                </Typography>
+              }
+              className="bg-blue-gray-300"
+              ripple={true}
+            />
+            <Button onClick={handleUnenroll} className="bg-red-500" size="sm">
+              Leave Course
+            </Button>
           </div>
         </div>
       </div>

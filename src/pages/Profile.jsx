@@ -1,19 +1,28 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { selectUser } from "../redux/reducers/userSlice";
-import { useNavigate } from "react-router";
-import { ProgressBar, ProgressCard } from "../components";
+import { ProgressCard } from "../components";
 
 const Profile = () => {
   const user = useSelector(selectUser);
-  const navigate = useNavigate();
-  const enrolledCourses = useSelector((state) => state.enrolledCourses);
+  const [enrolledCourses, setEnrolledCourses] = useState(null);
+  const courses = useSelector((state) => state.courses.courses);
+  const filterCoursesByUserId = (courses, id) => {
+    return courses.filter(
+      (course) =>
+        course.students &&
+        Object.values(course.students).some((student) => student.id === id)
+    );
+  };
 
   useEffect(() => {
-    if (!user) {
-      navigate("/signin");
+    if (user && courses) {
+      const enrolled = filterCoursesByUserId(courses, user.uid);
+      setEnrolledCourses(enrolled);
+    } else {
+      setEnrolledCourses([]);
     }
-  }, [user]);
+  }, [user, courses]);
 
   return (
     <>
@@ -40,14 +49,15 @@ const Profile = () => {
                 </div>
 
                 <div className="w-full px-4 flex flex-col gap-5">
-                  {enrolledCourses.map((course, index) => (
-                    <div
-                      key={index}
-                      className="flex justify-center align-middle gap-2"
-                    >
-                      <ProgressCard course={course} />
-                    </div>
-                  ))}
+                  {enrolledCourses &&
+                    enrolledCourses.map((course, index) => (
+                      <div
+                        key={index}
+                        className="flex justify-center align-middle gap-2"
+                      >
+                        <ProgressCard course={course} />
+                      </div>
+                    ))}
                 </div>
               </div>
             </div>

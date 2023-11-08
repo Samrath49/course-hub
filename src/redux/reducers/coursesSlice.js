@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FETCH_COURSES_SUCCESS, FETCH_COURSES_FAILURE } from '../actions/actions';
 
 const coursesSlice  = createSlice({
     name: 'courses',

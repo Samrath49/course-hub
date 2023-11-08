@@ -25,18 +25,28 @@ export const fetchCourses = () => {
   };
 };
 
-export const enrollUserInCourse = (courseId, userId) => {
-  const courseRef = ref(db, `courses/${courseId}/students/${userId}`);
+export const enrollUserInCourse = async (courseId, user) => {
+  const courseRef = ref(db, `courses/${courseId}/students/${user?.uid}`);
   // Set the user's enrollment status
-  update(courseRef, {
-    name: "User Name",
+  const newStudent = {
+    id: user?.uid,
+    name: user?.displayName,
+    email: user?.email,
     progress: "0",
     completed: "false"
-  });
+  }
+
+  update(courseRef, newStudent);
+  return true;
 }
 
-export const unenrollUserFromCourse = (courseId, userId) => {
-  const courseRef = ref(db, `courses/${courseId}/students/${userId}`);
-  // Remove the user from the course's students
-  remove(courseRef);
+export const unenrollUserFromCourse = (courseId, user) => {
+  const courseRef = ref(db, `courses/${courseId}/students/${user?.uid}`);
+
+  // Remove the student's data from the course
+  remove(courseRef).then(() => {
+    console.log(`User with ID ${user?.id} has been unenrolled from the course with ID ${courseId}`);
+  }).catch((error) => {
+    console.error(`Error unenrolling user from the course: ${error}`);
+  });
 }
