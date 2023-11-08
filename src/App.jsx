@@ -38,7 +38,7 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-black ${inter.className}">
+    <div className="bg-blue-gray-100/40 dark:bg-black ${inter.className}">
       <Router>
         <Header />
         <Routes>
